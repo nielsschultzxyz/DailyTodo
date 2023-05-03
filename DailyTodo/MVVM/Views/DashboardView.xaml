@@ -1,0 +1,380 @@
+﻿<UserControl x:Class="DailyTodo.MVVM.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DailyTodo.MVVM.Views"
+             xmlns:viewModel="clr-namespace:DailyTodo.MVVM.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewModel:DashboardViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <DockPanel>
+            <Label Content="Dashboard"
+                   Foreground="LightGray"
+                   HorizontalAlignment="Center"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   DockPanel.Dock="Top"
+                   Margin="0,8,0,0"/>
+
+            <Separator Background="#222222"
+                       DockPanel.Dock="Top"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1.6*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Margin="8,1,8,14">
+                    <!--<TextBlock Background="#222222"
+                               Text="FilterRadioBtn1"
+                               Foreground="LightGray"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               Height="38"
+                               Width="160"/>
+                    <TextBlock Background="#222222"
+                               Text="FilterRadioBtn2"
+                               Foreground="LightGray"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               Height="38"
+                               Width="160"/>
+                    <TextBlock Background="#222222"
+                               Text="FilterRadioBtn3"
+                               Foreground="LightGray"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               Height="38"
+                               Width="160"/>
+                    <TextBlock Background="#222222"
+                               Text="FilterRadioBtn4"
+                               Foreground="LightGray"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               Height="38"
+                               Width="160"/>
+                    <TextBlock Background="#222222"
+                               Text="FilterRadioBtn5"
+                               Foreground="LightGray"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               Height="38"
+                               Width="160"/>-->
+                    <RadioButton Style="{StaticResource DashboardRadioButtonTheme}"
+                                 Content="Day"
+                                 Command="{Binding filterForDayCommand}"/>
+
+                    <RadioButton Style="{StaticResource DashboardRadioButtonTheme}"
+                                 Command="{Binding filterForWeekCommand}"
+                                 Content="Week"
+                                 IsChecked="True"/>
+
+                    <RadioButton Style="{StaticResource DashboardRadioButtonTheme}"
+                                 Content="Month"
+                                 Command="{Binding filterForMonthCommand}"/>
+
+                    <RadioButton Style="{StaticResource DashboardRadioButtonTheme}"
+                                 Content="Year"
+                                 Command="{Binding filterForYearCommand}"/>
+
+                    <RadioButton Style="{StaticResource DashboardRadioButtonTheme}"
+                                 Content="All"
+                                 Command="{Binding filterForAllCommand}"/>
+                </StackPanel>
+
+                <!--<StackPanel Grid.Row="1" 
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    
+                    <Border Margin="8,2,8,2"
+                            Width="134"
+                            Height="108"
+                            Background="RosyBrown"
+                            CornerRadius="12">
+                        <StackPanel>
+                            <TextBlock Text="Some Stuff"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                            
+                            <Separator Background="#222222"
+                                       Margin="8"/>
+                            
+                            <TextBlock Text="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="8,2,8,2"
+                            Width="134"
+                            Height="108"
+                            Background="LightBlue"
+                            CornerRadius="12">
+                        <StackPanel>
+                            <TextBlock Text="Some Stuff"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="#222222"
+                                       Margin="8"/>
+
+                            <TextBlock Text="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="8,2,8,2"
+                            Width="134"
+                            Height="108"
+                            Background="RosyBrown"
+                            CornerRadius="12">
+                        <StackPanel>
+                            <TextBlock Text="Some Stuff"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="#222222"
+                                       Margin="8"/>
+
+                            <TextBlock Text="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="8,2,8,2"
+                            Width="134"
+                            Height="108"
+                            Background="LightBlue"
+                            CornerRadius="12">
+                        <StackPanel>
+                            <TextBlock Text="Some Stuff"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="#222222"
+                                       Margin="8"/>
+
+                            <TextBlock Text="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="8,2,8,2"
+                            Width="134"
+                            Height="108"
+                            Background="RosyBrown"
+                            CornerRadius="12">
+                        <StackPanel>
+                            <TextBlock Text="Some Stuff"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="#222222"
+                                       Margin="8"/>
+
+                            <TextBlock Text="18"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>-->
+
+                <Border Grid.Row="1"
+                        Background="#222222"
+                        Margin="8"
+                        CornerRadius="8"
+                        BorderBrush="#424242"
+                        BorderThickness="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <TextBlock Text="Infopanel"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="LightGray"
+                                       Margin="8"/>
+
+                            <TextBlock Text="Overview"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="11"
+                                       Margin="8"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1"
+                                    Background="#424242">
+                            <TextBlock Text="Count"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="#222222"
+                                       Margin="8"/>
+
+                            <TextBlock Text="{Binding CounterForAllTodos, 
+                                       UpdateSourceTrigger=PropertyChanged}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2"
+                                    Background="Transparent">
+                            <TextBlock Text="Finished"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="LightGray"
+                                       Margin="8"/>
+
+                            <TextBlock Text="{Binding FinishedTodos,
+                                       UpdateSourceTrigger=PropertyChanged}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3"
+                                    Background="#424242">
+                            <TextBlock Text="Percent"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="#222222"
+                                       Margin="8"/>
+
+                            <TextBlock Text="{Binding FinishedTodosPercent,
+                                       UpdateSourceTrigger=PropertyChanged}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="4"
+                                    Background="Transparent">
+                            <TextBlock Text="Open"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+
+                            <Separator Background="LightGray"
+                                       Margin="8"/>
+
+                            <TextBlock Text="{Binding TodosStillOpen,
+                                       UpdateSourceTrigger=PropertyChanged}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="Bold"
+                                       FontSize="20"
+                                       Margin="8"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                
+                <DataGrid Grid.Row="2"
+                          Margin="8,32,8,8"
+                          ItemsSource="{Binding TodoModelList}"
+                          Background="Transparent"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

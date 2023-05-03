@@ -1,0 +1,168 @@
+﻿<Window x:Class="DailyTodo.MVVM.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyTodo.MVVM.Views"
+        xmlns:viewModel="clr-namespace:DailyTodo.MVVM.ViewModel" 
+        xmlns:customcontrols="clr-namespace:DailyTodo.CustomControls"
+        mc:Ignorable="d"
+        Title="LoginWindow"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        Height="560" 
+        Width="380">
+
+    <Window.DataContext>
+        <viewModel:LoginViewModel/>
+    </Window.DataContext>
+
+
+    <Border Background="#282828"
+            CornerRadius="12"
+            BorderThickness="0"
+            BorderBrush="LightGray">
+        
+        <Grid Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.45*"/>
+                <RowDefinition Height="2.5*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Border>
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftClick"
+                                  Command="{Binding MoveWindowCommand}"/>
+                </Border.InputBindings>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.12*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Grid.Column="0"
+                           Content="Login"
+                           Foreground="LightGray"
+                           Margin="8,2,2,2"
+                           FontWeight="Bold"/>
+
+                    <Button Grid.Column="1"
+                        Content="x"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,4,0"
+                        Style="{StaticResource TitelbarButtonTheme}"
+                        Command="{Binding ShutDownCommand}"/>
+                </Grid>
+                
+            </Border>
+            
+            <Border Background="#222222" Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="6*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="/MVVM/Views/multiple-choice-icon-9.jpg"
+                           DockPanel.Dock="Left"
+                           Height="120"
+                           Width="120"
+                           Margin="2,0,0,0"/>
+                    
+                    <StackPanel Grid.Column="1">
+                        
+                        <Label Content="DailyTodos"
+                           Foreground="LightGray"
+                           FontWeight="Bold"
+                           FontSize="22"
+                           DockPanel.Dock="Left"
+                           Margin="2,22,0,0"/>
+                        
+                        <Label Content="Get your stuff done!"
+                           Foreground="LightBlue"
+                           FontSize="11"
+                           DockPanel.Dock="Top"
+                           Margin="2,-14,0,0"/>
+                    </StackPanel>
+                </Grid>
+                
+            </Border>
+
+            <StackPanel Grid.Row="2"
+                        Margin="18">
+
+                <StackPanel Margin="2">
+                    <Label Content="Login"
+                           Foreground="LightBLue"
+                           Margin="0,0,0,-3"
+                           FontWeight="Bold"
+                           FontSize="14"/>
+
+                    <Border Background="#222222"
+                            CornerRadius="4"
+                            Height="42">
+
+                        <TextBox Background="Transparent"
+                                 Text="{Binding Username, 
+                                 UpdateSourceTrigger=PropertyChanged}"
+                                 BorderThickness="0"
+                                 Foreground="LightGray"
+                                 VerticalContentAlignment="Center"
+                                 FontSize="13"
+                                 Margin="8,0,0,0"/>
+                    </Border>
+
+                </StackPanel>
+                
+                <StackPanel Margin="2,-6,2,2">
+                    <Label Content="Password"
+                           Foreground="LightBlue"
+                           Margin="0,0,0,-3"
+                           FontWeight="Bold"
+                           FontSize="14"/>
+
+                    <Border Background="#222222"
+                            CornerRadius="4"
+                            Height="42">
+
+                        <customcontrols:BindablePasswordBox 
+                            Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Margin="8,0,0,0">
+                        </customcontrols:BindablePasswordBox>
+                    </Border>
+
+                </StackPanel>
+
+                <TextBlock Text="{Binding ErrorMessage,
+                           UpdateSourceTrigger=PropertyChanged}"
+                           Foreground="IndianRed"
+                           Margin="6,8,0,0"
+                           FontWeight="Medium"
+                           FontSize="12"
+                           TextWrapping="Wrap"/>
+                
+                <Button Content="Login"
+                        Margin="0,14,0,0"
+                        Height="42"
+                        Style="{StaticResource NormalButtonStyle}"
+                        Command="{Binding LoginCommand}"
+                        Click="Button_Click"
+                        KeyDown="Button_KeyDown"/>
+                
+                <Separator Background="#424242"
+                           Margin="0,12,0,12"/>
+                
+                <Button Content="Do not have a Account? Create one!"
+                        Style="{StaticResource LoginWindowTransparentButtonStyle}"
+                        Command="{Binding CreateAccountCommand}"/>
+                
+                <Button Content="Login Problem?"
+                        Style="{StaticResource LoginWindowTransparentButtonStyle}"
+                        Command="{Binding LoginProblemCommand}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

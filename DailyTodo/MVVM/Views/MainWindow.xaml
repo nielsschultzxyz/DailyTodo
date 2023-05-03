@@ -1,0 +1,152 @@
+﻿<Window x:Class="DailyTodo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DailyTodo" 
+        xmlns:viewModel="clr-namespace:DailyTodo.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="720"
+        Width="1080"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="CanResize">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <!--Titlebar-->
+    <Border CornerRadius="12"
+            BorderBrush="LightGray"
+            BorderThickness="0"
+            Background="#282828">
+    <DockPanel Background="Transparent">
+        <Border Height="34"
+                DockPanel.Dock="Top">
+
+            <Border.InputBindings>
+                <MouseBinding MouseAction="LeftClick"
+                              Command="{Binding MoveWindowCommand}"/>
+            </Border.InputBindings>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.12*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Text="DailyTodo"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="LightGray"
+                           FontWeight="Bold"
+                           FontSize="18"
+                           FontFamily="Consolas"
+                           Margin="12,0,0,0"
+                           Width="1080"/>
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,4,4,4">
+
+                    <Button Content="-"
+                            Command="{Binding MinimizeWindowCommand}"
+                            Style="{StaticResource TitelbarButtonTheme}"/>
+                    <Button Content="□"
+                            Command="{Binding MaximizeWindowCommand}"
+                            Style="{StaticResource TitelbarButtonTheme}"/>
+                    <Button Content="x"
+                            Command="{Binding ShutDownWindowCommand}"
+                            Style="{StaticResource TitelbarButtonTheme}"/>
+
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!--Window-->
+        <Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!--NavBar Radiobtns access via RelayCommand-->
+                <Border>
+                    <StackPanel Margin="0,12,0,0">
+                        <RadioButton Content="🌁"
+                                     Command="{Binding ShowHomeViewCommand}"
+                                     ToolTip="HomeView"
+                                     IsChecked="True"/>
+                        <RadioButton Content="⌛"
+                                     Command="{Binding ShowDailyTodoViewCommand}"
+                                     ToolTip="TodoView"/>
+                        <RadioButton Content="📈"
+                                     Command="{Binding ShowDashboardViewCommad}"
+                                     ToolTip="DashboardView"/>
+                        <RadioButton Content="+"
+                                     Command="{Binding ShowAddDailyTodoViewCommand}"
+                                     ToolTip="Add new Todo View"/>
+                        <RadioButton Content="🔊"
+                                     Command="{Binding ShowNotifyViewCommand}"
+                                     ToolTip="NotifyView"/>
+                        <RadioButton Content="💻"
+                                     Command="{Binding ShowSettingsViewCommand}"
+                                     ToolTip="SettingsView"/>
+
+                    </StackPanel>
+                </Border>
+
+                <!--Open and finished todoModels-->
+                <Border Background="#303030" Grid.Column="1">
+                    <DockPanel Margin="12">
+                        <TextBox DockPanel.Dock="Top"
+                                 Style="{StaticResource SearchBoxStyle}"/>
+
+                        <Separator Margin="0,8,0,0" 
+                                   DockPanel.Dock="Top"
+                                   Background="#222222"/>
+
+                        <StackPanel DockPanel.Dock="Top"
+                                        Margin="0,12,0,12">
+                            <RadioButton Content="Open" 
+                                             IsChecked="True"
+                                             Style="{StaticResource FilterListViewTodoTheme}"/>
+                            <RadioButton Content="Finished"
+                                            Style="{StaticResource FilterListViewTodoTheme}"/>
+                        </StackPanel>
+
+                        <!--ListView TodoCollection-->
+                        <ListView DockPanel.Dock="Top" 
+                                  ItemsSource="{Binding TodoModelCollection,
+                                  Mode=OneWay, 
+                                  UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedItem="{Binding SelectedTodoModel, 
+                                  Mode=TwoWay, 
+                                  UpdateSourceTrigger=PropertyChanged}"
+                                  x:Name="TodoListView">
+
+                        </ListView>
+                    </DockPanel>
+                </Border>
+
+
+                <!--DataContext shows the different views-->
+                <Border Grid.Column="2"
+                        Background="#343434">
+                    <ContentPresenter Content="{Binding CurrentView}"/>
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </DockPanel>
+    </Border>
+
+</Window>

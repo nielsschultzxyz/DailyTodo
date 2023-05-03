@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="{x:Type DataGrid}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="ColumnHeaderHeight" Value="40"/>
+        <Setter Property="MinRowHeight" Value="24"/>
+        <Setter Property="RowHeight" Value="30"/>
+        <Setter Property="RowBackground" Value="#484848"/>
+        <Setter Property="Foreground" Value="LightGray"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="RowHeaderWidth" Value="0"/>
+        <Setter Property="CanUserResizeRows" Value="True"/>
+        <Setter Property="MinColumnWidth" Value="104"/>
+        <Setter Property="MaxColumnWidth" Value="540"/>
+        <Setter Property="AlternatingRowBackground" Value="#222222"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+    </Style>
+    <Style TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="Background" Value="#222222"/>
+        <Setter Property="Foreground" Value="LightGray"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+    <!--<Style TargetType="{x:Type DataGridRow}">
+        <Setter Property="Background" Value="#222222"/>
+    </Style>-->
+
+</ResourceDictionary>

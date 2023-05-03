@@ -1,0 +1,167 @@
+﻿<UserControl x:Class="DailyTodo.MVVM.Views.TodoTaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DailyTodo.MVVM.Views"
+             xmlns:viewModel="clr-namespace:DailyTodo.MVVM.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <!--SetData Context -> TodoTaskModel-->
+    <UserControl.DataContext>
+        <viewModel:TodoViewModel/>
+    </UserControl.DataContext>
+    
+    <Grid>
+        <DockPanel>
+            <Label Content="Todo Task overview"
+                   Foreground="LightGray"
+                   HorizontalAlignment="Center"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   DockPanel.Dock="Top"
+                   Margin="0,8,0,0"/>
+
+            <Separator Background="#222222"
+                       DockPanel.Dock="Top"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <!--Grid column1-->
+                <StackPanel>
+                    <!--Control Todoname-->
+                    <Border Background="#222222"
+                            Height="36"
+                            CornerRadius="4"
+                            Margin="8,1,8,1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📝 Todoname"
+                                       Width="100"
+                                       VerticalAlignment="Center"
+                                       Margin="8,0,0,0"
+                                       Foreground="LightGray"/>
+                            <TextBlock Text="||"
+                                       VerticalAlignment="Center"
+                                       Margin="2,0,0,0"
+                                       Foreground="LightGray"/>
+                            <TextBlock Width="220"
+                                       VerticalAlignment="Center"
+                                       Background="Transparent"
+                                       Foreground="LightGray"
+                                       FontSize="11"
+                                       Margin="18,0,0,0"
+                                       Text="{Binding Todoname,
+                                       UpdateSourceTrigger=PropertyChanged}"/>
+
+                        </StackPanel>
+                    </Border>
+
+                    <!--Control IsTodoFinished-->
+                    <Border Background="#222222"
+                            Height="36"
+                            CornerRadius="4"
+                            Margin="8,1,8,1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📝 finished?"
+                                       Width="100"
+                                       VerticalAlignment="Center"
+                                       Margin="8,0,0,0"
+                                       Foreground="LightGray"/>
+                            <TextBlock Text="||"
+                                       VerticalAlignment="Center"
+                                       Margin="2,0,0,0"
+                                       Foreground="LightGray"/>
+                            <TextBlock Width="220"
+                                       VerticalAlignment="Center"
+                                       Background="Transparent"
+                                       Foreground="LightGray"
+                                       FontSize="11"
+                                       Margin="18,0,0,0"
+                                       Text="{Binding IsTodoFinished,
+                                       UpdateSourceTrigger=PropertyChanged}"/>
+
+                        </StackPanel>
+                    </Border>
+
+                    <!--Control CreateDate-->
+                    <Border Background="#222222"
+                            Height="36"
+                            CornerRadius="4"
+                            Margin="8,1,8,1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📝 Createdate"
+                                       Width="100"
+                                       VerticalAlignment="Center"
+                                       Margin="8,0,0,0"
+                                       Foreground="LightGray"/>
+                            <TextBlock Text="||"
+                                       VerticalAlignment="Center"
+                                       Margin="2,0,0,0"
+                                       Foreground="LightGray"/>
+                            <TextBlock Width="220"
+                                       Background="Transparent"
+                                       Foreground="LightGray"
+                                       VerticalAlignment="Center"
+                                       FontSize="11"
+                                       Margin="18,0,0,0"
+                                       Text="{Binding TodoCreateDate,
+                                       UpdateSourceTrigger=PropertyChanged}"/>
+
+                        </StackPanel>
+                    </Border>
+
+                    <!--Control IsTodoFinished-->
+                    <Border Background="#222222"
+                            Height="36"
+                            CornerRadius="4"
+                            Margin="8,1,8,1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📝 finished till?"
+                                       Width="100"
+                                       VerticalAlignment="Center"
+                                       Margin="8,0,0,0"
+                                       Foreground="LightGray"/>
+                            <TextBlock Text="||"
+                                       VerticalAlignment="Center"
+                                       Margin="2,0,0,0"
+                                       Foreground="LightGray"/>
+                            <TextBlock Width="220"
+                                       VerticalAlignment="Center"
+                                       Background="Transparent"
+                                       Foreground="LightGray"
+                                       FontSize="11"
+                                       Margin="18,0,0,0"
+                                       Text="{Binding TodoFinsishedTillDate,
+                                       UpdateSourceTrigger=PropertyChanged}"/>
+
+                        </StackPanel>
+                        
+                    </Border>
+                </StackPanel>
+                
+                <!--Grid column2-->
+                <DockPanel Grid.Column="1">
+                    <Label Content="Beschreibung"
+                           Foreground="LightGray"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Margin="8"
+                           DockPanel.Dock="Top"/>
+
+                    <Separator Background="#222222"
+                       DockPanel.Dock="Top"/>
+
+                    <TextBlock Text="Todo beschreibung"
+                               Margin="8"
+                               Foreground="LightGray"
+                               TextWrapping="Wrap"/>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>
